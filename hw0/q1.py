@@ -1,32 +1,23 @@
 import sys
 
 def main(argv):
-    Input = open(argv[0] , 'r')
-    InputWord = Input.read()
-    Input.close()
-    WordList = InputWord.split( )
-    AnsList = []
-    TmpCount= []
-    for w in WordList:
-        if w not in AnsList:
-            AnsList.append(w)
-            TmpCount.append(0)
-    
-    for i in range(len(AnsList)):
-        for w in AnsList:
-            if (w == WordList[i]):
-                TmpCount[i] +=  1
-        
-    for i in range(len(AnsList)):
-        print(AnsList[i], i, TmpCount[i])
+    count = {}
+    for w in open(argv[0]).read().split():
+        if w in count:
+            count[w] += 1
+        else:
+            count[w] = 1
 
     Output = open('Q1.txt' , 'w')
-    for s in range(len(AnsList)):
-        if( s == len(AnsList)-1 ):
-            Output.write('{0} {1} {2}'.format(AnsList[s], s, TmpCount[s]))
+    s=0
+    for word, times in count.items():
+        if( s == len(count)-1 ):
+            # print('{0} {1} {2}'.format(word, s, times))
+            Output.write('{0} {1} {2}'.format(word, s, times))
         else:
-            Output.write('{0} {1} {2}\n'.format(AnsList[s], s, TmpCount[s]))
-
+            # print('{0} {1} {2}'.format(word, s, times))
+            Output.write('{0} {1} {2}\n'.format(word, s, times))
+        s += 1
 if __name__ == '__main__':
 	main(sys.argv[1:])
 
