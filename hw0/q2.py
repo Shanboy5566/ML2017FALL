@@ -14,7 +14,7 @@ def main(argv):
             # print('Old:',pixelMap[i,j][0])
             # print('New:',pixelsNew[i,j][0])
     # img.show()
-    img.save('Q2.jpg')
+    img.save('Q2.png')
 
 if __name__ == '__main__':
 	main(sys.argv[1:])
