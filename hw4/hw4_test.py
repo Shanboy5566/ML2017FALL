@@ -1,5 +1,6 @@
 import numpy as np
 import sys
+import csv
 import keras
 import gensim
 from keras.models import load_model
@@ -15,19 +16,19 @@ output_path = sys.argv[2]
 
 word2vec = gensim.models.Word2Vec.load('embedding')
 
-max_len = 40 
+max_len = 40
 
 tests = []
 test_data_path = sys.argv[1]
 
 with open(test_data_path, 'r') as f:
     rows = f.readlines()
-    for i,row in enumerate(rows):
+    for i, row in enumerate(rows):
         if i == 0:
             continue
         for pivot in range(len(row)):
             if row[pivot] == ',':
-                tests.append(row[pivot+1:-1])
+                tests.append(row[pivot + 1:-1])
                 tests[-1] = text_to_word_sequence(tests[-1])
                 for idx in range(len(tests[-1])):
                     tests[-1][idx] = word2vec[tests[-1][idx]]
@@ -47,14 +48,15 @@ with open(test_data_path, 'r') as f:
 #                 tests[-1][idx] = word2vec[tests[-1][idx]]
 #             break
 
-tests = pad_sequences(tests, maxlen=max_len, dtype=float, padding='post', truncating='post', value=0.)
+tests = pad_sequences(tests, maxlen=max_len, dtype=float,
+                      padding='post', truncating='post', value=0.)
 
-result = model.predict(tests, batch_size = 1000)
+result = model.predict(tests, batch_size=1000)
 predict = np.argmax(result, axis=1)
 
 with open(output_path, 'w') as f:
-    s = csv.writer(f,delimiter=',',lineterminator='\n')
-    s.writerow(["id","label"])
+    s = csv.writer(f, delimiter=',', lineterminator='\n')
+    s.writerow(["id", "label"])
     # f.write('id,label\n')
-    for i, v in  enumerate(predict):
-        f.write('%d,%d\n' %(i, v))
+    for i, v in enumerate(predict):
+        f.write('%d,%d\n' % (i, v))
