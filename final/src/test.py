@@ -106,7 +106,6 @@ Option_test = [x.strip().split(',') for x in Line]
 """
 Pretrain model
 """
-pretrain_model
 model = FastText('./wiki.zh/wiki.zh.bin')
 oov = 0
 zeros = np.zeros(300)
