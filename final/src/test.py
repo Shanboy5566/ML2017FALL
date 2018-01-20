@@ -316,9 +316,6 @@ for buf in record:
 """
 Save result
 """
-
-if not os.path.exists('./result'):
-    os.makedirs('./result')
 result_path = sys.argv[3]
 
 with open(result_path, 'w') as fout:
