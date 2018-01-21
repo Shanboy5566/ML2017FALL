@@ -26,8 +26,8 @@ src/final.sh
 
 bash final.sh [test.data_path] [test.csv_path] [result.csv_path]
 
-[test.data_path]:為助教所提供的測資test.data
+[test.data_path]:為助教所提供的測資test.data之路徑
 
-[test.csv_path]:為助教所提供的測資test.csv
+[test.csv_path]:為助教所提供的測資test.csv之路徑
 
-[result.csv_path]:為輸出結果的檔案
+[result.csv_path]:為輸出結果的檔案之路徑
