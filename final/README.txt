@@ -22,9 +22,9 @@ Keras==2.0.8
 
 ----------------------------------------
 
-src/final.sh
+src/test.sh
 
-bash final.sh [test.data_path] [test.csv_path] [result.csv_path]
+bash test.sh [test.data_path] [test.csv_path] [result.csv_path]
 
 [test.data_path]:為助教所提供的測資test.data之路徑
 
