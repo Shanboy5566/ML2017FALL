@@ -11,9 +11,6 @@ python 版本 : python 3.6.3
 
 使用套件：
 numpy==1.13.3
-random
-os
-sys
 pyfasttext==0.4.4
 gensim==3.2.0
 tensorflow==1.3.0
